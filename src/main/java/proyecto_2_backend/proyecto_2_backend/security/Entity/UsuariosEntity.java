@@ -8,7 +8,6 @@ import proyecto_2_backend.proyecto_2_backend.security.global.Entity.EntityId;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "usuarios")
 public class UsuariosEntity extends EntityId{
