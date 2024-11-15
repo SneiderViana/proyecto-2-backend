@@ -22,6 +22,7 @@ public class UsuariosEntity extends EntityId{
         this.id = id;
         this.username=username;
         this.password=password;
+        this.correo=correo;
         this.roles =roles;
     }
 

@@ -3,6 +3,7 @@ package proyecto_2_backend.proyecto_2_backend.security.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import proyecto_2_backend.proyecto_2_backend.security.Entity.UsuariosEntity;
@@ -11,6 +12,7 @@ import proyecto_2_backend.proyecto_2_backend.security.dto.UsuriosDto;
 import proyecto_2_backend.proyecto_2_backend.security.enums.RolesEnums;
 import proyecto_2_backend.proyecto_2_backend.security.global.exception.AttributeException;
 import proyecto_2_backend.proyecto_2_backend.security.global.utils.Operations;
+
 
 @Service
 public class UsuarioEntityService {
@@ -21,6 +23,9 @@ public class UsuarioEntityService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    AuthenticationManager authenticationManager;
+    
     public UsuariosEntity create(UsuriosDto usuariosDto){
         if(usuarioEntityRepository.existsByUsername(usuariosDto.getUsername())){
         throw new AttributeException("Username esta en uso");}
@@ -38,6 +43,16 @@ public class UsuarioEntityService {
         .map(rol -> RolesEnums.valueOf(rol)).collect(Collectors.toList());
         return new UsuariosEntity(id, usuariosDto.getUsername(),
          usuariosDto.getCorreo(), password,roles);
+    }
+
+    public List<UsuariosEntity> findall(){
+        List<UsuariosEntity> list;
+         try {
+            list=usuarioEntityRepository.findAll();
+         } catch (Exception e) {
+            throw e;
+         }
+        return list;
     }
 
 }

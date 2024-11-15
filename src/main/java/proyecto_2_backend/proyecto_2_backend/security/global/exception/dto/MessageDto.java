@@ -15,4 +15,5 @@ public class MessageDto {
 
     private HttpStatus status;
     private String message;
+  
 }

@@ -9,7 +9,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import proyecto_2_backend.proyecto_2_backend.security.global.exception.dto.MessageDto;
 
 @RestControllerAdvice
